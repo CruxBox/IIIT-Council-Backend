@@ -7,3 +7,5 @@ class College(models.Model):
 
 	collegeName = models.CharField(null=False)
 	collegeAddress = models.CharField(null=False)
+
+	#add more attributes

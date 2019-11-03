@@ -110,7 +110,8 @@ class Professors(models.Model):
 class ManagementPerson(models.Model):
 	user = models.OnetotOneField(User,on_delete = models.CASCADE)
 
-	college = models.ForeignKey(College, on_delete)
+	#ManagementPerson will be specific to one institute.
+	college = models.ForeignKey(College, on_delete = models.CASCADE)
 
 	#position choices and position attribute
 	#add more fields accordingly
