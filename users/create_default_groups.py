@@ -31,7 +31,6 @@ class Command(BaseCommand):
             		for permission in PERMISSIONS_LIMIT:
 	                    name = 'Can {} {}'.format(permission, model)
 	                    print("Creating {}".format(name))
-
 	                    try:
 	                        model_add_perm = Permission.objects.get(name=name)
 	                    except Permission.DoesNotExist:

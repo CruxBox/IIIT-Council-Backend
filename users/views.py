@@ -12,6 +12,7 @@ from guardian.mixin import PermissionRequiredMixin
 #
 # 	#This checks to confirm that request.user has the required permissions
 # 	permission_required = 'users.add_Professor'
+#	instance.groups.add(group_name) #instance is the newly created professor instance
 #
 ################
 
@@ -22,4 +23,4 @@ class add_professor_view(PermissionRequiredMixin, View):
 	#Now create a professor normally
 	#add him to the group
 
-class add_
+	#instance.groups.add('professors')
