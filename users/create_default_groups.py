@@ -2,6 +2,7 @@
 Create permission groups
 Create permissions (CRUD) for a set of groups. At the moment only one default group which comprises of admins and superusers exists.
 
+Director isn't in any group yet. Need input on how this is supposed to work.
 """
 
 """
@@ -51,7 +52,3 @@ class Command(BaseCommand):
 	                    new_group.permissions.add(model_add_perm)
 
         print("Created default group and permissions.")
-
-
-
-# Source: https://stackoverflow.com/questions/22250352/programmatically-create-a-django-group-with-permissions
