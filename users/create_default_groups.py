@@ -2,7 +2,6 @@
 Create permission groups
 Create permissions (CRUD) for a set of groups. At the moment only one default group which comprises of admins and superusers exists.
 
-Director isn't added to any group. Permissions are defined in Director model. Admin makes him a 
 """
 
 """

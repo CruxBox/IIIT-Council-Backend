@@ -21,7 +21,7 @@ class Admin(models.Model):
 
 class Professors(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	visitingFaculty = models.BooleanField( default = false)
+	visitingFaculty = models.BooleanField( default = false )
 	
 	#faculty can be visiting faculty to other institutes. Also, an institute may have many professors
 	colleges = models.ManyToManyField('College')
