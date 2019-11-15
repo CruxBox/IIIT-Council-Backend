@@ -3,9 +3,10 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+
 class College(models.Model):
 
-	collegeName = models.CharField(null=False)
-	collegeAddress = models.CharField(null=False)
+    collegeName = models.CharField(max_length=200, null=False)
+    collegeAddress = models.CharField(max_length=200, null=False)
 
-	#add more attributes
+    # add more attributes
