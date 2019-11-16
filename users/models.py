@@ -26,6 +26,7 @@ class Admin(models.Model):
     college = models.ForeignKey('colleges.College', on_delete=models.CASCADE)
 
     class Meta:
+        default_permissions = ()
         permissions = [
             ("view_Admin", "Can view admin"),
             ("add_Admin", "Can add admin"),
@@ -55,6 +56,8 @@ class Professors(models.Model):
     )
 
     class Meta:
+        default_permissions = ()
+
         permissions = [
             ("view_Professor", "Can view professor"),
             ("add_Professor", "Can add professor"),
@@ -80,6 +83,7 @@ class Directors(models.Model):
 	"""
 
     class Meta:
+        default_permissions = ()
         permissions = [
             ("view_Director", "Can view director"),
             ("add_Director", "Can add director"),
@@ -110,6 +114,7 @@ class Staff(models.Model):
 
     # Add fields accordingly
     class Meta:
+        default_permissions = ()
         permissions = [
             ("view_Staff", "Can view staff"),
             ("add_Staff", "Can add staff"),
