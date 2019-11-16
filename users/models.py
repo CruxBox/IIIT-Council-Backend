@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import PermissionsMixin, AbstractUser
-from colleges.models import College
 
 
 class User(AbstractUser):
@@ -18,13 +17,13 @@ class User(AbstractUser):
     phone_no = models.CharField(max_length=13, null=False)
 
     def __str__(self):
-        return first_name + ' ' + last_name
+        return self.first_name + ' ' + self.last_name
 
 
 class Admin(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    college = models.ForeignKey(College, on_delete=models.CASCADE)
+    college = models.ForeignKey('colleges.College', on_delete=models.CASCADE)
 
     class Meta:
         permissions = [
@@ -44,7 +43,7 @@ class Professors(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     visitingFaculty = models.BooleanField(default=False)
 
-    colleges = models.ForeignKey(College, on_delete=models.CASCADE)
+    colleges = models.ForeignKey('colleges.College', on_delete=models.CASCADE)
 
     # add more fields accordingly
     research_areas = models.CharField(max_length=2000)
@@ -69,7 +68,7 @@ class Directors(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     mentor = models.BooleanField(default=False)
 
-    college = models.ForeignKey(College, on_delete=models.CASCADE)
+    college = models.ForeignKey('colleges.College', on_delete=models.CASCADE)
 
     """
 	
@@ -101,7 +100,7 @@ class Staff(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     # Staff will be specific to one institute.
-    college = models.ForeignKey(College, on_delete=models.CASCADE)
+    college = models.ForeignKey('colleges.College', on_delete=models.CASCADE)
 
     department = models.CharField(
         max_length=20,
