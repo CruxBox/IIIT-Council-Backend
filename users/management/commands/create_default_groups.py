@@ -22,7 +22,7 @@ PERMISSIONS = ['view', 'add', 'delete', 'change',]
 PERMISSIONS_LIMIT = ['view',]
 
 class Command(BaseCommand):
-    help = 'Creates default permission groups for adminss'
+    help = 'Creates default permission groups for admins, professors and staff'
 
     def handle(self, *args, **options):
         for group in GROUPS:
