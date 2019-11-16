@@ -15,7 +15,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.models import Permission
 
 GROUPS = ['admins', 'professors', 'staff',]
-MODELS = ['professors', 'director', 'staff',] #If more models are create they need to be added in this list
+MODELS = ['professor', 'director', 'staff',] #If more models are create they need to be added in this list
 PERMISSIONS = ['view', 'add', 'delete', 'change',]
 PERMISSIONS_LIMIT = ['view',]
 
