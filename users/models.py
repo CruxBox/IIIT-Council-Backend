@@ -15,7 +15,7 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=50, null=False)
     last_name = models.CharField(max_length=50, null=False)
     phone_no = models.CharField(max_length=13, null=False)
-    #username=models.CharField(max_length=25,null=False)
+    username=models.CharField(max_length=25,null=False)
 
     def __str__(self):
         return self.username
