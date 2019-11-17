@@ -4,7 +4,7 @@ from django.contrib.auth.models import PermissionsMixin, AbstractUser
 
 class User(AbstractUser):
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone_no']
+    REQUIRED_FIELDS = ['username','first_name', 'last_name', 'phone_no']
 
     # attributes
     email = models.EmailField(
@@ -15,9 +15,10 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=50, null=False)
     last_name = models.CharField(max_length=50, null=False)
     phone_no = models.CharField(max_length=13, null=False)
+    #username=models.CharField(max_length=25,null=False)
 
     def __str__(self):
-        return self.first_name + ' ' + self.last_name
+        return self.username
 
 
 class Admin(models.Model):
@@ -33,6 +34,9 @@ class Admin(models.Model):
             ("change_Admin", "Can change admin"),
             ("delete_Admin", "Can delete admin"),
         ]
+
+    def __str__(self):
+        return self.user.username
 
 
 class Professors(models.Model):
@@ -54,6 +58,9 @@ class Professors(models.Model):
         choices=DEPARTMENT_CHOICES,
         default=None
     )
+
+    def __str__(self):
+        return self.user.username
 
     class Meta:
         default_permissions = ()
@@ -90,6 +97,10 @@ class Directors(models.Model):
             ("change_Director", "Can change director"),
             ("delete_Director", "Can delete director"),
         ]
+
+
+    def __str__(self):
+        return self.user.username
     # Add fields accordingly
 
 
@@ -97,8 +108,8 @@ class Staff(models.Model):
 
     # position choices and position attribute
     DEPARTMENT_CHOICES = (
-        (1, "Finance"),
-        (2, "Academics")
+        ('Fin', "Finance"),
+        ('Acad', "Academics")
     )
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -111,6 +122,9 @@ class Staff(models.Model):
         choices=DEPARTMENT_CHOICES,
         default=None
     )
+
+    def __str__(self):
+        return self.user.username
 
     # Add fields accordingly
     class Meta:

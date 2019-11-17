@@ -9,4 +9,7 @@ class College(models.Model):
     collegeName = models.CharField(max_length=200, null=False)
     collegeAddress = models.CharField(max_length=200, null=False)
 
+    def __str__(self):
+        return self.collegeName
+
     # add more attributes
