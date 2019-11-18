@@ -23,7 +23,7 @@ class User(AbstractUser):
 
 class Admin(models.Model):
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='admin')
     college = models.ForeignKey('colleges.College', on_delete=models.CASCADE)
 
     class Meta:
@@ -41,8 +41,8 @@ class Admin(models.Model):
 
 class Professors(models.Model):
     DEPARTMENT_CHOICES = (
-        (1, "CSE"),
-        (2, "ECE")
+        ("CSE", "CSE"),
+        ("ECE", "ECE")
     )
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)

@@ -13,7 +13,7 @@ Usage: manage.py create_groups
 
 import logging
 from django.core.management.base import BaseCommand
-from django.contrib.auth.models import Group
+from guardian.models import Group
 from django.contrib.auth.models import Permission
 GROUPS = ['admins', 'professors', 'staff', ]
 # If more models are create they need to be added in this list
@@ -27,7 +27,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         for group in GROUPS:
-            new_group, created = Group.objects.get_or_create(name=group)
+            new_group = Group.objects.get_or_create(name=group)
             for model in MODELS:
                 if group != 'admins':
                     for permission in PERMISSIONS_LIMIT:

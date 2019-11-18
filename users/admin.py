@@ -19,5 +19,8 @@ class CustomUserAdmin(UserAdmin):
         }),
     )
 
+class DirectorAdmin(admin.ModelAdmin):
+    form=DirectorsCreationForm
+
 admin.site.register(User,CustomUserAdmin)
 admin.site.register(Staff)
