@@ -1,10 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import PermissionsMixin, AbstractUser
+from django.contrib.auth.models import PermissionsMixin, AbstractUser, Group
 
 
 class User(AbstractUser):
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username','first_name', 'last_name', 'phone_no']
+    REQUIRED_FIELDS = ['username', 'first_name', 'last_name', 'phone_no']
 
     # attributes
     email = models.EmailField(
@@ -15,7 +15,7 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=50, null=False)
     last_name = models.CharField(max_length=50, null=False)
     phone_no = models.CharField(max_length=13, null=False)
-    username=models.CharField(max_length=25,null=False)
+    username = models.CharField(max_length=25, null=False)
 
     def __str__(self):
         return self.username
@@ -23,7 +23,8 @@ class User(AbstractUser):
 
 class Admin(models.Model):
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='admin')
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name='admin')
     college = models.ForeignKey('colleges.College', on_delete=models.CASCADE)
 
     class Meta:
@@ -48,7 +49,7 @@ class Professors(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     visitingFaculty = models.BooleanField(default=False)
 
-    colleges = models.ForeignKey('colleges.College', on_delete=models.CASCADE)
+    college = models.ForeignKey('colleges.College', on_delete=models.CASCADE)
 
     # add more fields accordingly
     research_areas = models.CharField(max_length=2000)
@@ -58,6 +59,9 @@ class Professors(models.Model):
         choices=DEPARTMENT_CHOICES,
         default=None
     )
+
+    def groups(self):
+        return self.user.groups
 
     def __str__(self):
         return self.user.username
@@ -97,7 +101,6 @@ class Directors(models.Model):
             ("change_Director", "Can change director"),
             ("delete_Director", "Can delete director"),
         ]
-
 
     def __str__(self):
         return self.user.username

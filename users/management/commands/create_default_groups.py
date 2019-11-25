@@ -13,8 +13,8 @@ Usage: manage.py create_groups
 
 import logging
 from django.core.management.base import BaseCommand
-from guardian.models import Group
 from django.contrib.auth.models import Permission
+from django.contrib.auth.models import Group
 GROUPS = ['admins', 'professors', 'staff', ]
 # If more models are create they need to be added in this list
 MODELS = ['professor', 'director', 'staff', ]
